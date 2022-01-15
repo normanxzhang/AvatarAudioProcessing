@@ -50,7 +50,7 @@ def draw_window():
     sprite_1.draw(window,(0,0,0))
 
 
-sprite_1 = button((255,255,255), 0, 475, 225, 100,'Sprite 1')
+sprite_1 = button((0,255,0), 0, 475, 225, 100,'Sprite 1')
 
 # Game loop
 end = False
