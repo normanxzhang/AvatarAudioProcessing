@@ -1,15 +1,20 @@
-from distutils.spawn import spawn
-from posixpath import splitdrive
 import pygame as pg
 from pygame.locals import *
 
+
+pg.init()
 # Global variables for easy changes
 screen_width = 1200
 screen_height = 900
 timer = None
 window = None
 fps = 30
+
+
 bg = pg.Color(255,255, 255)
+timer = pg.time.Clock()
+window = pg.display.set_mode((screen_width, screen_height))
+pg.display.set_caption("HackED")
 
 class button():
 	def __init__(self, color, x,y,width,height, text=''):
@@ -40,43 +45,37 @@ class button():
 
 		return False
 
-def run():
+def draw_window():
+    window.fill(bg)
+    sprite_1.draw(window,(0,0,0))
 
-    pg.init()
-    timer = pg.time.Clock()
-    window = pg.display.set_mode((screen_width, screen_height))
-    pg.display.set_caption("HackED")
-    sprite_1 = button((255,255,255), 0, 475, 225, 100,'Sprite 1')
 
-    # Game loop
-    end = False
-    while end == False:
-        window.fill(bg)
-        sprite_1.draw(window, (10,50,100))
-        # Check input
-        for event in pg.event.get():
-            pos = pg.mouse.get_pos()
-            if (event.type == QUIT):
-                end = True
-            if event.type == pg.MOUSEBUTTONDOWN:
-                if sprite_1.over(pos) == MOUSEBUTTONDOWN:
-                    print("Selected sprite 1")   # select sprite 1
-            
-            if event.type == pg.MOUSEMOTION:
-                if sprite_1.over(pos):
-                    sprite_1.color = (255,0,0)
-                else:
-                    sprite_1.color = (0,255,0)
+sprite_1 = button((0,255,0), 0, 475, 225, 100,'Sprite 1')
+
+# Game loop
+end = False
+while end == False:
+    draw_window()
+    pg.display.update()
+
+    # Check input
+    for event in pg.event.get():
+        pos = pg.mouse.get_pos()
+
+        if (event.type == QUIT):
+            end = True
+
+        if event.type == pg.MOUSEBUTTONDOWN:
+            if sprite_1.over(pos) == MOUSEBUTTONDOWN:
+                end = True   # select sprite 1
         
-                
-            # Draw graphics
-            window.fill(bg)
+        if event.type == pg.MOUSEMOTION:
+            if sprite_1.over(pos):
+                sprite_1.color = (255,0,0)
+            else:
+                sprite_1.color = (0,255,0)
 
-            # Update screen
-            pg.display.update()
-            timer.tick(fps)
+        # Update screen
+        pg.display.update()
+        timer.tick(fps)
 
-
-
-if __name__ == "__main__":
-	run()
