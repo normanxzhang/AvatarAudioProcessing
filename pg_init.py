@@ -7,8 +7,7 @@ screen_height = 900
 timer = None
 window = None
 fps = 30
-bg = pg.Color(0, 120, 0)
-
+bg = pg.Color(0, 0, 0)
 
 class button():
 	def __init__(self, color, x,y,width,height, text=''):
@@ -39,17 +38,31 @@ class button():
 
 		return False
 
-def play():
-	# PyGame initialization
-	pg.init()
-	timer = pg.time.Clock()
-	window = pg.display.set_mode((screen_width, screen_height))
-	pg.display.set_caption("HackED Beta Blackjack 404")		
-	pg.display.update()
-	timer.tick(fps)
-	pg.display.quit()
-	pg.quit()
+# Initialization function
+def InitPygame( screenWidth, screenHeight ):
+    global window
+    global timer
+    
+    pg.init()
+    timer = pg.time.Clock()
+    window = pg.display.set_mode( ( screenWidth, screenHeight ) )
+    pg.display.set_caption("HackED")
 
+# Call the initialization function
+InitPygame(screen_width, screen_height)
 
-if __name__ == "__main__":
-	play()
+# Game loop
+done = False
+while done == False:
+    
+    # Check input
+    for event in pg.event.get():
+        if (event.type == QUIT):
+            done = True
+        
+    # Draw graphics
+    window.fill(bg)
+
+    # Update screen
+    pg.display.update()
+    timer.tick(fps)
