@@ -38,40 +38,36 @@ class button():
 
 		return False
 
-# Initialization function
+
 def run():
-    global window
-    global timer
-    
+
     pg.init()
     timer = pg.time.Clock()
     window = pg.display.set_mode((screen_width, screen_height))
     pg.display.set_caption("HackED")
-    sprite_1 = button((0,255,0), 0, 475, 225, 100,'Sprite 1')
-
-    # Call the initialization function
+    sprite_1 = button((255,255,255), 0, 475, 225, 100,'Sprite 1')
 
     # Game loop
-    done = False
-    while done == False:
+    end = False
+    while end == False:
         window.fill(bg)
-        sprite_1.draw(window, (0,0,0))
+        sprite_1.draw(window, (10,50,100))
         # Check input
         for event in pg.event.get():
             pos = pg.mouse.get_pos()
             if (event.type == QUIT):
-                done = True
+                end = True
             if event.type == pg.MOUSEBUTTONDOWN:
                 if sprite_1.over(pos) == MOUSEBUTTONDOWN:
-                    pass    # select sprite 1
+                    end = True    # select sprite 1
         
-            
-        # Draw graphics
-        window.fill(bg)
+                
+            # Draw graphics
+            window.fill(bg)
 
-        # Update screen
-        pg.display.update()
-        timer.tick(fps)
+            # Update screen
+            pg.display.update()
+            timer.tick(fps)
 
 
 
