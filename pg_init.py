@@ -1,3 +1,5 @@
+from distutils.spawn import spawn
+from posixpath import splitdrive
 import pygame as pg
 from pygame.locals import *
 
@@ -7,7 +9,7 @@ screen_height = 900
 timer = None
 window = None
 fps = 30
-bg = pg.Color(0, 0, 0)
+bg = pg.Color(255,255, 255)
 
 class button():
 	def __init__(self, color, x,y,width,height, text=''):
@@ -38,7 +40,6 @@ class button():
 
 		return False
 
-
 def run():
 
     pg.init()
@@ -59,7 +60,13 @@ def run():
                 end = True
             if event.type == pg.MOUSEBUTTONDOWN:
                 if sprite_1.over(pos) == MOUSEBUTTONDOWN:
-                    end = True    # select sprite 1
+                    print("Selected sprite 1")   # select sprite 1
+            
+            if event.type == pg.MOUSEMOTION:
+                if sprite_1.over(pos):
+                    sprite_1.color = (255,0,0)
+                else:
+                    sprite_1.color = (0,255,0)
         
                 
             # Draw graphics
