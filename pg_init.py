@@ -39,30 +39,41 @@ class button():
 		return False
 
 # Initialization function
-def InitPygame( screenWidth, screenHeight ):
+def run():
     global window
     global timer
     
     pg.init()
     timer = pg.time.Clock()
-    window = pg.display.set_mode( ( screenWidth, screenHeight ) )
+    window = pg.display.set_mode((screen_width, screen_height))
     pg.display.set_caption("HackED")
+    sprite_1 = button((0,255,0), 0, 475, 225, 100,'Sprite 1')
 
-# Call the initialization function
-InitPygame(screen_width, screen_height)
+    # Call the initialization function
 
-# Game loop
-done = False
-while done == False:
-    
-    # Check input
-    for event in pg.event.get():
-        if (event.type == QUIT):
-            done = True
+    # Game loop
+    done = False
+    while done == False:
+        window.fill(bg)
+        sprite_1.draw(window, (0,0,0))
+        # Check input
+        for event in pg.event.get():
+            pos = pg.mouse.get_pos()
+            if (event.type == QUIT):
+                done = True
+            if event.type == pg.MOUSEBUTTONDOWN:
+                if sprite_1.over(pos) == MOUSEBUTTONDOWN:
+                    pass    # select sprite 1
         
-    # Draw graphics
-    window.fill(bg)
+            
+        # Draw graphics
+        window.fill(bg)
 
-    # Update screen
-    pg.display.update()
-    timer.tick(fps)
+        # Update screen
+        pg.display.update()
+        timer.tick(fps)
+
+
+
+if __name__ == "__main__":
+	run()
