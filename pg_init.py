@@ -100,7 +100,7 @@ delay = 0
 run = True
 flag = False
 loadAnimations()
-audioManager = audio.Audio(1024, pyaudio.paInt16, 1, 44100, 0.03,1200)
+audioManager = audio.Audio(1024, pyaudio.paInt16, 1, 44100, 0.03,400)
 audioManager.init()
 green_flag = False
 blue_flag = False
@@ -123,27 +123,28 @@ while run == True:
                 window.fill('#FF0000')
                 playAni(1)
             elif blue_flag:
-                window.fill('#7F00FF')
-                playAni(7)
+                window.fill('#FFA500')
+                playAni(3)
             elif red_flag:
                 window.fill('#00FF00')
                 playAni(5)
             elif yellow_flag:
-                window.fill('#FFA500')
-                playAni(3)
+                window.fill('#7F00FF')
+                playAni(7)
+
         else:
             if green_flag:
                 window.fill('#FF0000')
                 playAni(0)
             elif blue_flag:
-                window.fill('#7F00FF')
-                playAni(6)
+                window.fill('#FFA500')
+                playAni(2)
             elif red_flag:
                 window.fill('#00FF00')
                 playAni(4)
             elif yellow_flag:
-                window.fill('#FFA500')
-                playAni(2)
+                window.fill('#7F00FF')
+                playAni(6)
 
     # Check input
     for event in pg.event.get():
@@ -162,7 +163,7 @@ while run == True:
                 elif select_btn2.over(pos):
                     mouse_click = True
                     select_btn2 = button('#ABDEE6', 530, 210, 200, 60,'Select')
-                    blue_flag = True
+                    yellow_flag = True
                 
                 elif select_btn3.over(pos):
                     mouse_click = True
@@ -172,7 +173,7 @@ while run == True:
                 elif select_btn4.over(pos):
                     mouse_click = True
                     select_btn4 = button('#ABDEE6', 70, 490, 200, 60,'Select')
-                    yellow_flag = True
+                    blue_flag = True
 
             else:
                 if mouse_click == True:
