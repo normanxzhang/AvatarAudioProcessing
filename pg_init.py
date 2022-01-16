@@ -1,6 +1,7 @@
 import pygame as pg
 from pygame.locals import *
 import sprite_sheet
+import animation as ani
 
 pg.init()
 # Global variables for easy changes
@@ -8,20 +9,26 @@ screen_width = 600
 screen_height = 450
 window = None
 fps = 30
-
-
 bg = pg.Color(0,255,0)
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
 
-def spriteTest(): 
+#array of Animation objects
+animations = []
+
+def loadAnimations():
     ss = sprite_sheet.SpriteSheet('Sprite Sheets\index.png')
-    sprites = ss.loadRow(2)
-    #sprites = []
-    for s in sprites:
-        window.blit(s, ( (screen_width - s.get_width() )/2, (screen_height - s.get_height() )/2))
-        pg.display.flip()
+    spritesRow1 = ss.loadRow(1)
+    spritesRow2 = ss.loadRow(2)
+
+    animations.append(ani.Animation("Idle", spritesRow1, 100))
+    animations.append(ani.Animation("Talking", spritesRow2, 500))
+
+def playAni(number): 
+    
+    animations[number].playAnimation(window)
+        
 
 class button():
     def __init__(self, color, x,y,width,height, text=''):
@@ -60,17 +67,18 @@ def draw_window():
 
 
 start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 100, 250, 100,'Start')
-
+delay = 0
 # Game loop
 run = True
 flag = False
+loadAnimations()
 while run == True:
     if not flag:
         draw_window()
     else:
         window.fill(bg)
-    pg.display.update()
-    spriteTest()
+    #pg.display.update()
+    playAni(0)
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
@@ -96,5 +104,5 @@ while run == True:
             else:
                 start_btn.color = ('#ABDEE6')
 
-        # Update screen
-        pg.display.update()
+    # Update screen
+    pg.display.update()

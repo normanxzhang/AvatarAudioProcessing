@@ -1,12 +1,4 @@
 function a = matlab_main()
-   % a = getInputDevices()
-    a =2
-    getInputDevices()
+    a = 69;
+    fprintf("hello world\n");
 end
-
-function devices = getInputDevices()
-    deviceReader = audioDeviceReader;
-    devices = getAudioDevices(deviceReader);
-    
-end
-
