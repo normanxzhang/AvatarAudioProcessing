@@ -8,6 +8,7 @@ class Animation:
         self.delay = delay
 
     def playAnimation(self, window):
+        
         pass
 
 

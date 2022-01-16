@@ -6,13 +6,11 @@ pg.init()
 # Global variables for easy changes
 screen_width = 600
 screen_height = 450
-timer = None
 window = None
 fps = 30
 
 
 bg = pg.Color(0,255,0)
-timer = pg.time.Clock()
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
@@ -22,7 +20,6 @@ def spriteTest():
     sprites = ss.loadRow(2)
     #sprites = []
     for s in sprites:
-        pg.transform.scale(s, (200, 200))
         window.blit(s, ( (screen_width - s.get_width() )/2, (screen_height - s.get_height() )/2))
         pg.display.flip()
 
@@ -101,4 +98,3 @@ while run == True:
 
         # Update screen
         pg.display.update()
-        timer.tick(fps)
