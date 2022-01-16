@@ -73,12 +73,12 @@ run = True
 flag = False
 loadAnimations()
 while run == True:
+
     if not flag:
         draw_window()
     else:
         window.fill(bg)
-    #pg.display.update()
-    playAni(0)
+        playAni(0)
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
@@ -91,11 +91,12 @@ while run == True:
                 if start_btn.over(pos):
                     mouse_click = True
                     start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 105, 250, 100,'Start')
+
             else:
                 if mouse_click == True:
-                    print('click')
                     mouse_click = False
                     flag = True
+                    
 
         if event.type == pg.MOUSEMOTION:
             if start_btn.over(pos):
@@ -106,3 +107,4 @@ while run == True:
 
     # Update screen
     pg.display.update()
+
