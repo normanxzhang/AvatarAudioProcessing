@@ -1,29 +1,29 @@
 import pygame as pg
 from pygame.locals import *
 import sprite_sheet
+import animation as ani
 
 pg.init()
 # Global variables for easy changes
 screen_width = 600
 screen_height = 450
-timer = None
-window = None
 fps = 30
-
-
 bg = pg.Color(0,255,0)
-timer = pg.time.Clock()
+#clock = pg.time.Clock()
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
 
+
 def spriteTest(): 
     ss = sprite_sheet.SpriteSheet('Sprite Sheets\index.png')
     sprites = ss.loadRow(2)
+    animation = ani.Animation("None", sprites, 1000)
+    animation.playAnimation(window)
     #sprites = []
-    for s in sprites:
+"""    for s in sprites:
         window.blit(s, (0,0))
-        pg.display.flip()
+        pg.display.flip()"""
 
 class button():
     def __init__(self, color, x,y,width,height, text=''):
@@ -62,7 +62,7 @@ def draw_window():
 
 
 start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 100, 250, 100,'Start')
-
+delay = 0
 # Game loop
 run = True
 flag = False
@@ -99,5 +99,6 @@ while run == True:
                 start_btn.color = ('#ABDEE6')
 
         # Update screen
-        pg.display.update()
-        timer.tick(fps)
+    pg.display.update()
+    #clock.tick(fps)
+
