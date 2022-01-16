@@ -46,8 +46,6 @@ def loadAnimations():
     animations.append(ani.Animation("Talking", yellow_talking, 40))
 
 
-
-
 def playAni(number): 
     animations[number].playAnimation(window)
         
@@ -68,7 +66,6 @@ class button():
             pg.draw.rect(win, outline, (self.x-2,self.y-2,self.width+4,self.height+4),border_radius=25)
 
         pg.draw.rect(win, self.color, (self.x,self.y,self.width,self.height),border_radius=25)
-
 
         if self.text != '':
             font = pg.font.SysFont('corbel', 40)
