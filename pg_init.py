@@ -66,8 +66,12 @@ char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 100, 250, 100
 
 # Game loop
 run = True
+flag = False
 while run == True:
-    draw_window()
+    if not flag:
+        draw_window()
+    else:
+        window.fill(bg)
     pg.display.update()
     spriteTest()
     # Check input
@@ -77,15 +81,16 @@ while run == True:
         if (event.type == QUIT):
             run = False
 
-        if pg.mouse.get_pressed()[0]:
-            if char_1.over(pos):
-                mouse_click = True
-                char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 105, 250, 100,6,'Start')
-        else:
-            if mouse_click == True:
-                print('click')
-                mouse_click = False
-                char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 100, 250, 100,6,'Start')
+        if not flag:
+            if pg.mouse.get_pressed()[0]:
+                if char_1.over(pos):
+                    mouse_click = True
+                    char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 105, 250, 100,6,'Start')
+            else:
+                if mouse_click == True:
+                    print('click')
+                    mouse_click = False
+                    flag = True
 
         if event.type == pg.MOUSEMOTION:
             if char_1.over(pos):
