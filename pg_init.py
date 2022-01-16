@@ -21,11 +21,29 @@ animations = []
 
 def loadAnimations():
     ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png',(4000,8000))
-    spritesRow1 = ss.loadRow(1)
-    spritesRow2 = ss.loadRow(2)
+    green_idle = ss.loadRow(1)
+    green_talking = ss.loadRow(2)
 
-    animations.append(ani.Animation("Idle", spritesRow1, 80))
-    animations.append(ani.Animation("Talking", spritesRow2, 40))
+    blue_idle = ss.loadRow(6)
+    blue_talking = ss.loadRow(7)
+
+    red_idle = ss.loadRow(11)
+    red_talking = ss.loadRow(12)
+    
+    yellow_idle = ss.loadRow(16)
+    yellow_talking = ss.loadRow(17)
+
+    animations.append(ani.Animation("Idle", green_idle, 80))
+    animations.append(ani.Animation("Talking", green_talking, 40))
+    
+    animations.append(ani.Animation("Idle", blue_idle, 80))
+    animations.append(ani.Animation("Talking", blue_talking, 40))
+    
+    animations.append(ani.Animation("Idle", red_idle, 80))
+    animations.append(ani.Animation("Talking", red_talking, 40))
+
+    animations.append(ani.Animation("Idle", yellow_idle, 80))
+    animations.append(ani.Animation("Talking", yellow_talking, 40))
 
 
 
@@ -74,9 +92,6 @@ def draw_window():
     select_btn4.draw(window,(0,0,0))
     
 
-
-
-
 select_btn1 = button('#ABDEE6', 10, 220, 200, 60,'Select')
 select_btn2 = button('#ABDEE6', 590, 220, 200, 60,'Select')
 select_btn3 = button('#ABDEE6', 590, 320, 200, 60,'Select')
@@ -88,10 +103,13 @@ flag = False
 loadAnimations()
 audioManager = audio.Audio(1024, pyaudio.paInt16, 1, 44100, 0.03)
 audioManager.init()
+green_flag = False
+blue_flag = False
+red_flag = False
+yellow_flag = False
 
-loadAnimations()
+
 while run == True:
-
     if not flag:
         draw_window()
         ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png',(2000,4000))
@@ -101,11 +119,34 @@ while run == True:
         window.blit(ss.slime_preview(15),(590,10))
 
     else:
-        window.fill(bg)
+        
         if(audioManager.talking):
-            playAni(1)
+            if green_flag:
+                window.fill('#FF0000')
+                playAni(1)
+            elif blue_flag:
+                window.fill('#7F00FF')
+                playAni(7)
+            elif red_flag:
+                window.fill('#00FF00')
+                playAni(5)
+            elif yellow_flag:
+                window.fill('#FFA500')
+                playAni(3)
         else:
-            playAni(0)
+            if green_flag:
+                window.fill('#FF0000')
+                playAni(0)
+            elif blue_flag:
+                window.fill('#7F00FF')
+                playAni(6)
+            elif red_flag:
+                window.fill('#00FF00')
+                playAni(4)
+            elif yellow_flag:
+                window.fill('#FFA500')
+                playAni(2)
+
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
@@ -118,18 +159,23 @@ while run == True:
                 if select_btn1.over(pos):
                     mouse_click = True
                     select_btn1 = button('#ABDEE6', 10, 225, 200, 60,'Select')
+                    green_flag = True
                 
                 elif select_btn2.over(pos):
                     mouse_click = True
                     select_btn2 = button('#ABDEE6', 590, 225, 200, 60,'Select')
+                    blue_flag = True
                 
                 elif select_btn3.over(pos):
                     mouse_click = True
                     select_btn3 = button('#ABDEE6', 590, 325, 200, 60,'Select')
-                
+                    red_flag= True
+
                 elif select_btn4.over(pos):
                     mouse_click = True
                     select_btn4 = button('#ABDEE6', 10, 325, 200, 60,'Select')
+                    yellow_flag = True
+
             else:
                 if mouse_click == True:
                     mouse_click = False
