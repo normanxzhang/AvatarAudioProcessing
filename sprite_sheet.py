@@ -1,21 +1,25 @@
+import pg_init
 import pygame
 
-class spritesheet:
+class SpriteSheet:
     def __init__(self, filepath ):
         self.sheet = pygame.image.load(filepath).convert()
 
-#Load sprites from a specific loaction
+#Load specific sprite from a specific loaction (rectangle)
+def spriteLocation(self, rectangle):
 
-def imageLoc(self, shape, colour = None):
+    rectangle = pygame.Rect(rectangle)
+    sprite = pygame.surface(rectangle.size).convert()
+    sprite.blit(self.sheet, (0,0), rectangle)
+    return sprite
 
-    shape = pygame.Shape(shape)
-    sprite = pygame.surface(shape.size).convert()
-    sprite.blit(self.sheet, (0,0), shape)
-    if colour is not None:
-        if colour is -1:
-            colour = sprite.getLoc(0,0)
+def loadAllSprites(self):
+    sprites = []
+    size = 106
+    for x in range(4):
+        for y in range(2):
+            sprites.append(spriteLocation(( x*size,y*size,size+size*x,size+size*y )))
+    return sprites
 
-
-
-def imagesLoc(self,shapes, colour = None):
-    return[self.imageLoc(shape,)]
+ss = SpriteSheet('Sprite Sheets\index.png')
+ss.loadAllSprites()

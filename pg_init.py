@@ -1,7 +1,6 @@
 import pygame as pg
 from pygame.locals import *
 
-
 pg.init()
 # Global variables for easy changes
 screen_width = 1200
@@ -86,4 +85,3 @@ while end == False:
         # Update screen
         pg.display.update()
         timer.tick(fps)
-
