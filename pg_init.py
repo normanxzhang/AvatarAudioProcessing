@@ -11,7 +11,7 @@ window = None
 fps = 30
 
 
-bg = pg.Color('#FFFFFF')
+bg = pg.Color('#ABDEE6')
 timer = pg.time.Clock()
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
@@ -56,11 +56,11 @@ def draw_window():
     char_1.draw(window,(0,0,0))
 
 
-char_1 = button('#0077B6', screen_width/2 - 125, screen_height/2 - 50, 250, 100,6,'Start')
+char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 - 50, 250, 100,6,'Start')
 
 # Game loop
-end = False
-while end == False:
+run = True
+while run == True:
     draw_window()
     pg.display.update()
 
@@ -69,7 +69,7 @@ while end == False:
         pos = pg.mouse.get_pos()
 
         if (event.type == QUIT):
-            end = True
+            run = False
 
         if pg.mouse.get_pressed()[0]:
             if char_1.over(pos):
@@ -81,10 +81,10 @@ while end == False:
 
         if event.type == pg.MOUSEMOTION:
             if char_1.over(pos):
-                char_1.color = ('#0077B6')
+                char_1.color = ('#FFC8A2')
   
             else:
-                char_1.color = ('#0077B6')
+                char_1.color = ('#FFC8A2')
 
         # Update screen
         pg.display.update()
