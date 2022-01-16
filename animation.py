@@ -1,4 +1,3 @@
-import sprite_sheet
 import pygame as pg
 clock = pg.time.Clock()
 class Animation:
@@ -23,17 +22,3 @@ class Animation:
                 self.currentSprite = 0
             # next sprite
         window.blit(self.sprites[self.currentSprite], ( (window.get_width() - self.sprites[self.currentSprite].get_width() )/2, (window.get_height() - self.sprites[self.currentSprite].get_height() )/4))
-        #window.blit(self.sprites[self.currentSprite], (0, 0))
-        
-        
-        #print(self.time)
-        
-
-#pygame.time.Clock()
-#idleSprites = loadRow(2)
-#idleAnimation = ("idle animation", idleSprites,  0.1)
-"""
-attribute in class called time
-add time btwn each frame to time as long as the time is less than the delay
-as soon as time > delay, reset time = 0, move to next frame
-"""
