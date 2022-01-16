@@ -9,7 +9,7 @@ screen_width = 800
 screen_height = 600
 window = None
 fps = 30
-bg = pg.Color('#FFFFFF')
+bg = pg.Color(0,255,0)
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
@@ -18,12 +18,12 @@ mouse_click = False
 animations = []
 
 def loadAnimations():
-    ss = sprite_sheet.SpriteSheet('Sprite Sheets\sprite_sheet.png')
+    ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png')
     spritesRow1 = ss.loadRow(1)
     spritesRow2 = ss.loadRow(2)
 
-    animations.append(ani.Animation("Idle", spritesRow1, 10))
-    animations.append(ani.Animation("Talking", spritesRow2, 20))
+    animations.append(ani.Animation("Idle", spritesRow1, 100))
+    animations.append(ani.Animation("Talking", spritesRow2, 100))
 
 def playAni(number): 
     
@@ -70,11 +70,11 @@ def draw_window():
     
 
 def sprites_preview():
-        placeholder = pg.image.load('Sprite Sheets\sprite_sheet.png').convert_alpha()
-        window.blit(placeholder,(10,0))
-        window.blit(placeholder,(10,380))
-        window.blit(placeholder,(590,380))
-        window.blit(placeholder,(590,0))
+    placeholder = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
+    window.blit(placeholder,(10,0))
+    window.blit(placeholder,(10,380))
+    window.blit(placeholder,(590,380))
+    window.blit(placeholder,(590,0))
 
 
 select_btn1 = button('#ABDEE6', 10, 220, 200, 60,'Select')
@@ -94,7 +94,7 @@ while run == True:
         sprites_preview()
     else:
         window.fill(bg)
-        playAni(0)
+        playAni(1)
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
