@@ -45,8 +45,8 @@ class button():
         if pos[0] > self.x and pos[0] < self.x + self.width:
             if pos[1] > self.y and pos[1] < self.y + self.height:
                 return True
-
         return False
+
 
 def draw_window():
     window.fill(bg)
@@ -69,7 +69,8 @@ while end == False:
             end = True
 
         if pg.mouse.get_pressed()[0]:
-            mouse_click = True
+            if char_1.over(pos):
+                mouse_click = True
         else:
             if mouse_click == True:
                 print('click')
