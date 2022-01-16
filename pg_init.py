@@ -56,7 +56,7 @@ def draw_window():
     char_1.draw(window,(0,0,0))
 
 
-char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 - 50, 250, 100,6,'Start')
+char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 100, 250, 100,6,'Start')
 
 # Game loop
 run = True
