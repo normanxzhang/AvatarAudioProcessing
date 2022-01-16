@@ -9,7 +9,7 @@ screen_width = 800
 screen_height = 600
 window = None
 fps = 30
-bg = pg.Color(0,255,0)
+bg = pg.Color('#E8DFF5')
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
@@ -18,12 +18,15 @@ mouse_click = False
 animations = []
 
 def loadAnimations():
-    ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png')
+    ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png',(4000,8000))
     spritesRow1 = ss.loadRow(1)
     spritesRow2 = ss.loadRow(2)
 
     animations.append(ani.Animation("Idle", spritesRow1, 100))
     animations.append(ani.Animation("Talking", spritesRow2, 100))
+
+
+
 
 def playAni(number): 
     
@@ -69,15 +72,7 @@ def draw_window():
     select_btn4.draw(window,(0,0,0))
     
 
-def sprites_preview():
-    green_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
-    blue_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
-    red_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
-    yellow_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
-    window.blit(green_slime,(10,0))
-    window.blit(blue_slime,(10,380))
-    window.blit(red_slime,(590,380))
-    window.blit(yellow_slime,(590,0))
+
 
 
 select_btn1 = button('#ABDEE6', 10, 220, 200, 60,'Select')
@@ -88,13 +83,18 @@ delay = 0
 # Game loop
 run = True
 flag = False
-loadAnimations()
 
+loadAnimations()
 while run == True:
 
     if not flag:
         draw_window()
-        sprites_preview()
+        ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png',(2000,4000))
+        window.blit(ss.slime_preview(0),(10,10))
+        window.blit(ss.slime_preview(5),(10,390))
+        window.blit(ss.slime_preview(10),(590,390))
+        window.blit(ss.slime_preview(15),(590,10))
+
     else:
         window.fill(bg)
         playAni(1)
