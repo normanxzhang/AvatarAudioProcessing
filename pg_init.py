@@ -11,7 +11,7 @@ window = None
 fps = 30
 
 
-bg = pg.Color('#ABDEE6')
+bg = pg.Color('#00FF00')
 timer = pg.time.Clock()
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
@@ -22,7 +22,8 @@ def spriteTest():
     sprites = ss.loadRow(2)
     #sprites = []
     for s in sprites:
-        window.blit(s, (0,0))
+        pg.transform.scale(s, (200, 200))
+        window.blit(s, ( (screen_width - s.get_width() )/2, (screen_height - s.get_height() )/2))
         pg.display.flip()
 
 class button():
