@@ -58,7 +58,7 @@ class Audio:
             data = self.stream.read(self.chunk)
             rms = audioop.rms(data, 2)
         if(rms > 75):
-            print(rms,"talking")
+            #print(rms,"talking")
             self.talking = True
             self.time = 0
 
