@@ -1,5 +1,6 @@
 import pygame as pg
 from pygame.locals import *
+import sprite_sheet
 
 pg.init()
 # Global variables for easy changes
@@ -16,7 +17,13 @@ window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
 
-
+def spriteTest(): 
+    ss = sprite_sheet.SpriteSheet('Sprite Sheets\index.png')
+    sprites = ss.loadAllSprites()
+    #sprites = []
+    for s in sprites:
+        window.blit(s, (0,0))
+        pg.display.flip()
 
 class button():
     def __init__(self, color, x,y,width,height, elevation, text=''):
@@ -62,7 +69,7 @@ run = True
 while run == True:
     draw_window()
     pg.display.update()
-
+    spriteTest()
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
