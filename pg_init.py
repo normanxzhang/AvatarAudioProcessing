@@ -11,7 +11,7 @@ window = None
 fps = 30
 
 
-bg = pg.Color('#00FF00')
+bg = pg.Color(0,255,0)
 timer = pg.time.Clock()
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
@@ -27,9 +27,8 @@ def spriteTest():
         pg.display.flip()
 
 class button():
-    def __init__(self, color, x,y,width,height, elevation, text=''):
-        self.elevation = elevation
-        self.dyn_elevation = elevation
+    def __init__(self, color, x,y,width,height, text=''):
+
         self.color = color
         self.x = x
         self.y = y
@@ -60,15 +59,19 @@ class button():
 
 def draw_window():
     window.fill(bg)
-    char_1.draw(window,(0,0,0))
+    start_btn.draw(window,(0,0,0))
 
 
-char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 100, 250, 100,6,'Start')
+start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 100, 250, 100,'Start')
 
 # Game loop
 run = True
+flag = False
 while run == True:
-    draw_window()
+    if not flag:
+        draw_window()
+    else:
+        window.fill(bg)
     pg.display.update()
     spriteTest()
     # Check input
@@ -78,22 +81,23 @@ while run == True:
         if (event.type == QUIT):
             run = False
 
-        if pg.mouse.get_pressed()[0]:
-            if char_1.over(pos):
-                mouse_click = True
-                char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 105, 250, 100,6,'Start')
-        else:
-            if mouse_click == True:
-                print('click')
-                mouse_click = False
-                char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 100, 250, 100,6,'Start')
+        if not flag:
+            if pg.mouse.get_pressed()[0]:
+                if start_btn.over(pos):
+                    mouse_click = True
+                    start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 105, 250, 100,'Start')
+            else:
+                if mouse_click == True:
+                    print('click')
+                    mouse_click = False
+                    flag = True
 
         if event.type == pg.MOUSEMOTION:
-            if char_1.over(pos):
-                char_1.color = ('#FFC8A2')
+            if start_btn.over(pos):
+                start_btn.color = ('#ABDEE6')
   
             else:
-                char_1.color = ('#FFC8A2')
+                start_btn.color = ('#ABDEE6')
 
         # Update screen
         pg.display.update()
