@@ -21,9 +21,16 @@ def spriteTest():
     animation = ani.Animation("None", sprites, 1000)
     animation.playAnimation(window)
     #sprites = []
+<<<<<<< HEAD
 """    for s in sprites:
         window.blit(s, (0,0))
         pg.display.flip()"""
+=======
+    for s in sprites:
+        pg.transform.scale(s, (200, 200))
+        window.blit(s, ( (screen_width - s.get_width() )/2, (screen_height - s.get_height() )/2))
+        pg.display.flip()
+>>>>>>> b159c3aaee0d7058f193e1b7fcbdfa4d8625f65f
 
 class button():
     def __init__(self, color, x,y,width,height, text=''):
