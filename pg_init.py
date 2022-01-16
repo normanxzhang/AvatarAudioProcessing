@@ -70,11 +70,14 @@ def draw_window():
     
 
 def sprites_preview():
-    placeholder = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
-    window.blit(placeholder,(10,0))
-    window.blit(placeholder,(10,380))
-    window.blit(placeholder,(590,380))
-    window.blit(placeholder,(590,0))
+    green_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
+    blue_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
+    red_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
+    yellow_slime = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
+    window.blit(green_slime,(10,0))
+    window.blit(blue_slime,(10,380))
+    window.blit(red_slime,(590,380))
+    window.blit(yellow_slime,(590,0))
 
 
 select_btn1 = button('#ABDEE6', 10, 220, 200, 60,'Select')
@@ -125,13 +128,3 @@ while run == True:
                     flag = True
                     
     pg.display.update()
-"""        if event.type == pg.MOUSEMOTION:
-            if select_btn1.over(pos):
-                select_btn1.color = ('#ABDEE6')
-  
-            else:
-                select_btn1.color = ('#ABDEE6')
-"""
-    # Update screen
-
-
