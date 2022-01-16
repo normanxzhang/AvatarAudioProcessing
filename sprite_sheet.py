@@ -18,7 +18,7 @@ class SpriteSheet:
     def loadRow(self, rowNumber):
         sprites = []
         size = 400
-        for y in range(rowNumber):
-            for x in range(10):
-                sprites.append(self.spriteLocation((x*size, y*size, size, size)))
+
+        for x in range(10):
+            sprites.append(self.spriteLocation((x*size, rowNumber*size, size, size)))
         return sprites

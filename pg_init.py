@@ -19,8 +19,8 @@ animations = []
 
 def loadAnimations():
     ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png')
-    spritesRow1 = ss.loadRow(5)
-    spritesRow2 = ss.loadRow(3)
+    spritesRow1 = ss.loadRow(1)
+    spritesRow2 = ss.loadRow(2)
 
     animations.append(ani.Animation("Idle", spritesRow1, 100))
     animations.append(ani.Animation("Talking", spritesRow2, 100))
@@ -94,7 +94,7 @@ while run == True:
         sprites_preview()
     else:
         window.fill(bg)
-        playAni(0)
+        playAni(1)
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
