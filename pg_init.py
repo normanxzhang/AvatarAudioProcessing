@@ -5,11 +5,11 @@ import animation as ani
 
 pg.init()
 # Global variables for easy changes
-screen_width = 600
-screen_height = 450
+screen_width = 800
+screen_height = 600
 window = None
 fps = 30
-bg = pg.Color(0,255,0)
+bg = pg.Color('#FFFFFF')
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
@@ -18,7 +18,7 @@ mouse_click = False
 animations = []
 
 def loadAnimations():
-    ss = sprite_sheet.SpriteSheet('Sprite Sheets\index.png')
+    ss = sprite_sheet.SpriteSheet('Sprite Sheets\sprite_sheet.png')
     spritesRow1 = ss.loadRow(1)
     spritesRow2 = ss.loadRow(2)
 
@@ -49,7 +49,7 @@ class button():
 
 
         if self.text != '':
-            font = pg.font.SysFont('cambria', 60)
+            font = pg.font.SysFont('cambria', 40)
             text = font.render(self.text, 1, (0,0,0))
             win.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
 
@@ -63,22 +63,38 @@ class button():
 
 def draw_window():
     window.fill(bg)
-    start_btn.draw(window,(0,0,0))
+    select_btn1.draw(window,(0,0,0))
+    select_btn2.draw(window,(0,0,0))
+    select_btn3.draw(window,(0,0,0))
+    select_btn4.draw(window,(0,0,0))
+    
+
+def sprites_preview():
+        placeholder = pg.image.load('Sprite Sheets\sprite_sheet.png').convert_alpha()
+        window.blit(placeholder,(10,0))
+        window.blit(placeholder,(10,380))
+        window.blit(placeholder,(590,380))
+        window.blit(placeholder,(590,0))
 
 
-start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 100, 250, 100,'Start')
+select_btn1 = button('#ABDEE6', 10, 220, 200, 60,'Select')
+select_btn2 = button('#ABDEE6', 590, 220, 200, 60,'Select')
+select_btn3 = button('#ABDEE6', 590, 320, 200, 60,'Select')
+select_btn4 = button('#ABDEE6', 10, 320, 200, 60,'Select')
 delay = 0
 # Game loop
 run = True
 flag = False
 loadAnimations()
+
 while run == True:
+
     if not flag:
         draw_window()
+        sprites_preview()
     else:
         window.fill(bg)
-    #pg.display.update()
-    playAni(0)
+        playAni(0)
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
@@ -88,21 +104,34 @@ while run == True:
 
         if not flag:
             if pg.mouse.get_pressed()[0]:
-                if start_btn.over(pos):
+                if select_btn1.over(pos):
                     mouse_click = True
-                    start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 105, 250, 100,'Start')
+                    select_btn1 = button('#ABDEE6', 10, 225, 200, 60,'Select')
+                
+                elif select_btn2.over(pos):
+                    mouse_click = True
+                    select_btn2 = button('#ABDEE6', 590, 225, 200, 60,'Select')
+                
+                elif select_btn3.over(pos):
+                    mouse_click = True
+                    select_btn3 = button('#ABDEE6', 590, 325, 200, 60,'Select')
+                
+                elif select_btn4.over(pos):
+                    mouse_click = True
+                    select_btn4 = button('#ABDEE6', 10, 325, 200, 60,'Select')
             else:
                 if mouse_click == True:
-                    print('click')
                     mouse_click = False
                     flag = True
-
-        if event.type == pg.MOUSEMOTION:
-            if start_btn.over(pos):
-                start_btn.color = ('#ABDEE6')
+                    
+    pg.display.update()
+"""        if event.type == pg.MOUSEMOTION:
+            if select_btn1.over(pos):
+                select_btn1.color = ('#ABDEE6')
   
             else:
-                start_btn.color = ('#ABDEE6')
-
+                select_btn1.color = ('#ABDEE6')
+"""
     # Update screen
-    pg.display.update()
+
+
