@@ -26,9 +26,8 @@ def spriteTest():
         pg.display.flip()
 
 class button():
-    def __init__(self, color, x,y,width,height, elevation, text=''):
-        self.elevation = elevation
-        self.dyn_elevation = elevation
+    def __init__(self, color, x,y,width,height, text=''):
+
         self.color = color
         self.x = x
         self.y = y
@@ -62,7 +61,7 @@ def draw_window():
     start_btn.draw(window,(0,0,0))
 
 
-start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 100, 250, 100,6,'Start')
+start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 100, 250, 100,'Start')
 
 # Game loop
 run = True
@@ -85,7 +84,7 @@ while run == True:
             if pg.mouse.get_pressed()[0]:
                 if start_btn.over(pos):
                     mouse_click = True
-                    start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 105, 250, 100,6,'Start')
+                    start_btn = button('#ABDEE6', screen_width/2 - 125, screen_height/2 + 105, 250, 100,'Start')
             else:
                 if mouse_click == True:
                     print('click')
