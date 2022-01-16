@@ -49,7 +49,6 @@ def loadAnimations():
 
 
 def playAni(number): 
-    
     animations[number].playAnimation(window)
         
 
@@ -101,7 +100,7 @@ delay = 0
 run = True
 flag = False
 loadAnimations()
-audioManager = audio.Audio(1024, pyaudio.paInt16, 1, 44100, 0.03)
+audioManager = audio.Audio(1024, pyaudio.paInt16, 1, 44100, 0.03,1200)
 audioManager.init()
 green_flag = False
 blue_flag = False
@@ -119,7 +118,6 @@ while run == True:
         window.blit(ss.slime_preview(15),(530,-5))
 
     else:
-        
         if(audioManager.talking):
             if green_flag:
                 window.fill('#FF0000')

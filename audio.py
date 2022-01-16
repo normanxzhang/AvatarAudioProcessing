@@ -1,14 +1,19 @@
 import pyaudio
 import audioop
+import pygame as pg
+clock = pg.time.Clock()
+
 
 class Audio:
 
-    def __init__(self, chunck, format, channels, rate, seconds):
-        self.chunck = chunck
+    def __init__(self, chunk, format, channels, rate, seconds, off_delay):
+        self.chunk = chunk
         self.format = format
         self.channels = channels
         self.rate = rate
         self.seconds = seconds
+        self.off_delay = off_delay
+        self.time = 0
         
         self.p = None
         self.stream = None
@@ -35,7 +40,7 @@ class Audio:
             input = True,
             output = False,
             input_device_index = id,
-            frames_per_buffer = self.chunck
+            frames_per_buffer = self.chunk
         )
         self.stream = stream
         self.p = p
@@ -48,13 +53,17 @@ class Audio:
         print("Audio Closed")
 
     def listen(self):
-        for i in range(0, int(self.rate / self.chunck*self.seconds)):
-            data = self.stream.read(self.chunck)
+        clock.tick(30)
+        for i in range(0, int(self.rate / self.chunk*self.seconds)):
+            data = self.stream.read(self.chunk)
             rms = audioop.rms(data, 2)
-        if(rms > 50):
+        if(rms > 25):
             print(rms,"talking")
-            if(self.talking is False):
-                self.talking = True
+            self.talking = True
+            self.time = 0
 
+        elif self.time < self.off_delay:
+            self.talking = True
+            self.time += clock.get_time()
         else:
             self.talking = False

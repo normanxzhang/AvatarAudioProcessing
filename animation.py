@@ -21,7 +21,6 @@ class Animation:
                 self.currentSprite += 1
             else:
                 self.currentSprite = 0
-            #pg.display.update()
             # next sprite
         window.blit(self.sprites[self.currentSprite], ( (window.get_width() - self.sprites[self.currentSprite].get_width() )/2, (window.get_height() - self.sprites[self.currentSprite].get_height() )/4))
         #window.blit(self.sprites[self.currentSprite], (0, 0))
