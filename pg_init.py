@@ -2,6 +2,8 @@ import pygame as pg
 from pygame.locals import *
 import sprite_sheet
 import animation as ani
+import pyaudio
+import audio
 
 pg.init()
 # Global variables for easy changes
@@ -89,6 +91,8 @@ delay = 0
 run = True
 flag = False
 loadAnimations()
+audioManager  = audio.Audio(1024, pyaudio.paInt16, 1, 44100, 0.03)
+audioManager.init()
 
 while run == True:
 
@@ -97,7 +101,10 @@ while run == True:
         sprites_preview()
     else:
         window.fill(bg)
-        playAni(1)
+        if(audioManager.taling):
+            playAni(1)
+        else:
+            playAni(0)
     # Check input
     for event in pg.event.get():
         pos = pg.mouse.get_pos()
@@ -128,3 +135,6 @@ while run == True:
                     flag = True
                     
     pg.display.update()
+    audioManager.listen()
+
+audioManager.close()
