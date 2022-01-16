@@ -23,11 +23,8 @@ class Animation:
                 self.currentSprite = 0
             #pg.display.update()
             # next sprite
-            #window.blit(sprites[currentSprite], ( (window.get_width() - sprites[currentSprite].get_width() )/2, (window.get_width() - sprites[currentSprite].get_width() )/2))
-        window.blit(self.sprites[self.currentSprite], (0, 0))
-        
-        
-        print(self.time)
+            #window.blit(sprites[currentSprite], ( )
+        window.blit(self.sprites[self.currentSprite], ((window.get_width() - self.sprites[self.currentSprite].get_width() )/2, (window.get_height() - self.sprites[self.currentSprite].get_height() )/2))
         
 
 #pygame.time.Clock()

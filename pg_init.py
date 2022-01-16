@@ -22,8 +22,8 @@ def loadAnimations():
     spritesRow1 = ss.loadRow(1)
     spritesRow2 = ss.loadRow(2)
 
-    animations.append(ani.Animation("Idle", spritesRow1, 100))
-    animations.append(ani.Animation("Talking", spritesRow2, 500))
+    animations.append(ani.Animation("Idle", spritesRow1, 10))
+    animations.append(ani.Animation("Talking", spritesRow2, 20))
 
 def playAni(number): 
     

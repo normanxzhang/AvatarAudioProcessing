@@ -3,7 +3,7 @@ function a = matlab_main()
     
    
     fprintf("hello world\n");
-    VAD = voiceActivityDetector;
+    %VAD = voiceActivityDetector;
     
     
     framelength = 1024;
@@ -20,13 +20,13 @@ function a = matlab_main()
     %Audio stream loop
     tic;
     while(toc < inf)
-        audio = micReader();
-                spectAnalyzer(audio);
+        audio = micReader()
+                spectAnalyzer(audio, );
         %perform audio proccessing here
-        %lms(audio, double);
+        lms(audio);
         
-        [probability,noiseEstimate] = VAD(audio);
-        disp(probability);
+        %[probability,noiseEstimate] = VAD(audio);
+        %disp(noiseEstimate);
     end
     
     release(micReader)
