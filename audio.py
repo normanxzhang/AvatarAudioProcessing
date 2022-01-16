@@ -51,7 +51,7 @@ class Audio:
         for i in range(0, int(self.rate / self.chunck*self.seconds)):
             data = self.stream.read(self.chunck)
             rms = audioop.rms(data, 2)
-        if(rms > 425):
+        if(rms > 50):
             print(rms,"talking")
             if(self.talking is False):
                 self.talking = True

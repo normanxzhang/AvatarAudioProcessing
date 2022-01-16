@@ -24,8 +24,8 @@ def loadAnimations():
     spritesRow1 = ss.loadRow(1)
     spritesRow2 = ss.loadRow(2)
 
-    animations.append(ani.Animation("Idle", spritesRow1, 100))
-    animations.append(ani.Animation("Talking", spritesRow2, 100))
+    animations.append(ani.Animation("Idle", spritesRow1, 80))
+    animations.append(ani.Animation("Talking", spritesRow2, 40))
 
 
 
