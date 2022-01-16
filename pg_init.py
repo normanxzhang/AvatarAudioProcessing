@@ -92,10 +92,10 @@ def draw_window():
     select_btn4.draw(window,(0,0,0))
     
 
-select_btn1 = button('#ABDEE6', 10, 220, 200, 60,'Select')
-select_btn2 = button('#ABDEE6', 590, 220, 200, 60,'Select')
-select_btn3 = button('#ABDEE6', 590, 320, 200, 60,'Select')
-select_btn4 = button('#ABDEE6', 10, 320, 200, 60,'Select')
+select_btn1 = button('#ABDEE6', 70, 205, 200, 60,'Select')
+select_btn2 = button('#ABDEE6', 530, 205, 200, 60,'Select')
+select_btn3 = button('#ABDEE6', 530, 485, 200, 60,'Select')
+select_btn4 = button('#ABDEE6', 70, 485, 200, 60,'Select')
 delay = 0
 # Game loop
 run = True
@@ -113,10 +113,10 @@ while run == True:
     if not flag:
         draw_window()
         ss = sprite_sheet.SpriteSheet('Sprite Sheets\slime_spritesheet.png',(2000,4000))
-        window.blit(ss.slime_preview(0),(10,10))
-        window.blit(ss.slime_preview(5),(10,390))
-        window.blit(ss.slime_preview(10),(590,390))
-        window.blit(ss.slime_preview(15),(590,10))
+        window.blit(ss.slime_preview(0),(70,-5))
+        window.blit(ss.slime_preview(5),(70,275))
+        window.blit(ss.slime_preview(10),(530,275))
+        window.blit(ss.slime_preview(15),(530,-5))
 
     else:
         
@@ -158,22 +158,22 @@ while run == True:
             if pg.mouse.get_pressed()[0]:
                 if select_btn1.over(pos):
                     mouse_click = True
-                    select_btn1 = button('#ABDEE6', 10, 225, 200, 60,'Select')
+                    select_btn1 = button('#ABDEE6', 70, 210, 200, 60,'Select')
                     green_flag = True
                 
                 elif select_btn2.over(pos):
                     mouse_click = True
-                    select_btn2 = button('#ABDEE6', 590, 225, 200, 60,'Select')
+                    select_btn2 = button('#ABDEE6', 530, 210, 200, 60,'Select')
                     blue_flag = True
                 
                 elif select_btn3.over(pos):
                     mouse_click = True
-                    select_btn3 = button('#ABDEE6', 590, 325, 200, 60,'Select')
+                    select_btn3 = button('#ABDEE6', 530, 490, 200, 60,'Select')
                     red_flag= True
 
                 elif select_btn4.over(pos):
                     mouse_click = True
-                    select_btn4 = button('#ABDEE6', 10, 325, 200, 60,'Select')
+                    select_btn4 = button('#ABDEE6', 70, 490, 200, 60,'Select')
                     yellow_flag = True
 
             else:
