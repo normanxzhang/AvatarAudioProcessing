@@ -11,7 +11,7 @@ class SpriteSheet:
         rectangle = pygame.Rect(rectangle)
         sprite = pygame.Surface(rectangle.size).convert_alpha()
         #sprite  = pygame.transform.scale(sprite, (200, 200))
-        sprite.fill('#FFFFFF')
+        sprite.fill('#0000FF')
         sprite.blit(self.sheet, (0,0), rectangle)
         return sprite
 

@@ -27,7 +27,7 @@ class Animation:
         #window.blit(self.sprites[self.currentSprite], (0, 0))
         
         
-        print(self.time)
+        #print(self.time)
         
 
 #pygame.time.Clock()
