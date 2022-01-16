@@ -12,12 +12,11 @@ class SpriteSheet:
         sprite.blit(self.sheet, (0,0), rectangle)
         return sprite
 
-    def loadAllSprites(self):
+    def loadRow(self, rowNumber):
         sprites = []
         size = 105
-        for y in range(2):
+        for y in range(rowNumber):
             for x in range(4):
                 sprites.append(self.spriteLocation((x*size, y*size, size, size)))
         return sprites
-
 

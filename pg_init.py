@@ -19,7 +19,7 @@ mouse_click = False
 
 def spriteTest(): 
     ss = sprite_sheet.SpriteSheet('Sprite Sheets\index.png')
-    sprites = ss.loadAllSprites()
+    sprites = ss.loadRow(2)
     #sprites = []
     for s in sprites:
         window.blit(s, (0,0))
