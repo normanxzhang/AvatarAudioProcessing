@@ -9,7 +9,7 @@ screen_width = 800
 screen_height = 600
 window = None
 fps = 30
-bg = pg.Color(0,255,0)
+bg = pg.Color('#FFFFFF')
 window = pg.display.set_mode((screen_width, screen_height))
 pg.display.set_caption("HackED")
 mouse_click = False
@@ -18,7 +18,7 @@ mouse_click = False
 animations = []
 
 def loadAnimations():
-    ss = sprite_sheet.SpriteSheet('Sprite Sheets\index.png')
+    ss = sprite_sheet.SpriteSheet('Sprite Sheets\sprite_sheet.png')
     spritesRow1 = ss.loadRow(1)
     spritesRow2 = ss.loadRow(2)
 
@@ -70,7 +70,7 @@ def draw_window():
     
 
 def sprites_preview():
-        placeholder = pg.image.load('Sprite Sheets\placeholder.png').convert_alpha()
+        placeholder = pg.image.load('Sprite Sheets\sprite_sheet.png').convert_alpha()
         window.blit(placeholder,(10,0))
         window.blit(placeholder,(10,380))
         window.blit(placeholder,(590,380))
