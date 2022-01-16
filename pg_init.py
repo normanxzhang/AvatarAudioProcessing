@@ -80,10 +80,12 @@ while run == True:
         if pg.mouse.get_pressed()[0]:
             if char_1.over(pos):
                 mouse_click = True
+                char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 105, 250, 100,6,'Start')
         else:
             if mouse_click == True:
                 print('click')
                 mouse_click = False
+                char_1 = button('#FFC8A2', screen_width/2 - 125, screen_height/2 + 100, 250, 100,6,'Start')
 
         if event.type == pg.MOUSEMOTION:
             if char_1.over(pos):
